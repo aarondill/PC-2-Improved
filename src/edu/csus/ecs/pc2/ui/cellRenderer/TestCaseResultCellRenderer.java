@@ -1,4 +1,4 @@
-// Copyright (C) 1989-2023 PC2 Development Team: John Clevenger, Douglas Lane, Samir Ashoo, and Troy Boudreau.
+// Copyright (C) 1989-2019 PC2 Development Team: John Clevenger, Douglas Lane, Samir Ashoo, and Troy Boudreau.
 package edu.csus.ecs.pc2.ui.cellRenderer;
 
 import java.awt.Color;
@@ -79,9 +79,8 @@ public class TestCaseResultCellRenderer extends DefaultTableCellRenderer {
             setNoValidator();
         } else if (text.equalsIgnoreCase("not executed")) {
             setNotExecuted();
-        } else if (text.equalsIgnoreCase("judging")) {
-            setJudgingResult();
         }
+        
     }
     
     private void setPass() {
@@ -111,12 +110,6 @@ public class TestCaseResultCellRenderer extends DefaultTableCellRenderer {
         setFont(new Font(getFont().getName(),Font.ITALIC, 12));
         setText("(Not Executed)");  
     }
-    
-    private void setJudgingResult() {
-        setBackground(Color.cyan);
-        setForeground(Color.black);
-        setFont(new Font(getFont().getName(),Font.ITALIC, 12));
-        setText("(Judging)");  
-    }
+
 }
 

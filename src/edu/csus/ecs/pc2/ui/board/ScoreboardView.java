@@ -1,4 +1,4 @@
-// Copyright (C) 1989-2023 PC2 Development Team: John Clevenger, Douglas Lane, Samir Ashoo, and Troy Boudreau.
+// Copyright (C) 1989-2021 PC2 Development Team: John Clevenger, Douglas Lane, Samir Ashoo, and Troy Boudreau.
 package edu.csus.ecs.pc2.ui.board;
 
 import java.awt.BorderLayout;
@@ -34,7 +34,6 @@ import edu.csus.ecs.pc2.ui.ContestClockDisplay;
 import edu.csus.ecs.pc2.ui.ContestClockDisplay.DisplayTimes;
 import edu.csus.ecs.pc2.ui.FrameUtilities;
 import edu.csus.ecs.pc2.ui.JPanePlugin;
-import edu.csus.ecs.pc2.ui.NSAStandingsPane;
 import edu.csus.ecs.pc2.ui.OptionsPane;
 import edu.csus.ecs.pc2.ui.PacketMonitorPane;
 import edu.csus.ecs.pc2.ui.PluginLoadPane;
@@ -193,9 +192,6 @@ public class ScoreboardView extends JFrame implements UIPlugin {
                 addUIPlugin(getMainTabbedPane(), "Standings", standingsTablePane);
                 standingsTablePane.addPropertyChangeListener("standings", new PropertyChangeListenerImplementation());
                 
-                NSAStandingsPane nsaStandingsPane = new NSAStandingsPane();
-                addUIPlugin(getMainTabbedPane(), "Standings New", nsaStandingsPane);
-
                 BalloonColorListPane colorsPane = new BalloonColorListPane();
                 addUIPlugin(getMainTabbedPane(), "Colors", colorsPane);
                 BalloonPane balloonHandler = new BalloonPane();

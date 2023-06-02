@@ -1,4 +1,4 @@
-// Copyright (C) 1989-2023 PC2 Development Team: John Clevenger, Douglas Lane, Samir Ashoo, and Troy Boudreau.
+// Copyright (C) 1989-2019 PC2 Development Team: John Clevenger, Douglas Lane, Samir Ashoo, and Troy Boudreau.
 package edu.csus.ecs.pc2.api.implementation;
 
 import java.util.ArrayList;
@@ -23,7 +23,6 @@ import edu.csus.ecs.pc2.api.IRun;
 import edu.csus.ecs.pc2.api.ISite;
 import edu.csus.ecs.pc2.api.IStanding;
 import edu.csus.ecs.pc2.api.ITeam;
-import edu.csus.ecs.pc2.api.IVersionInfo;
 import edu.csus.ecs.pc2.api.RunStates;
 import edu.csus.ecs.pc2.api.listener.IConfigurationUpdateListener;
 import edu.csus.ecs.pc2.api.listener.IConnectionEventListener;
@@ -50,6 +49,8 @@ import edu.csus.ecs.pc2.ui.UIPlugin;
  * @author pc2@ecs.csus.edu
  * @version $Id$
  */
+
+// $HeadURL$
 public class Contest implements IContest, UIPlugin {
 
     /**
@@ -76,8 +77,6 @@ public class Contest implements IContest, UIPlugin {
     private GenerateStandings generateStandings = new GenerateStandings();
     
     private Log log = null;
-    
-    private VersionInfoImplementation versionInfoImplementation = null;
 
     public Contest(IInternalContest contest, IInternalController controller, Log log) {
         this.log = log;
@@ -502,12 +501,5 @@ public class Contest implements IContest, UIPlugin {
     public IInternalContest getInternalContest() {
         return contest ;
     }
-
-    @Override
-    public IVersionInfo getVersionInfo() {
-        if (versionInfoImplementation == null) {
-            versionInfoImplementation = new VersionInfoImplementation();
-        }
-        return versionInfoImplementation;
-    }
+    
 }

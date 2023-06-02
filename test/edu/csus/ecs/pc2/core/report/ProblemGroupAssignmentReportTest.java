@@ -44,7 +44,6 @@ public class ProblemGroupAssignmentReportTest extends AbstractTestCase {
 
         File cdpConfigDirectory = new File(dirname);
         IInternalContest contest = new InternalContest();
-        ensureStaticLog();
         loader.initializeContest(contest, cdpConfigDirectory);
 
         IInternalController controller = new SampleContest().createController(contest, true, false);

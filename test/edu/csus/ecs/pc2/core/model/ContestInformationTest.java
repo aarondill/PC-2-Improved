@@ -4,7 +4,6 @@ package edu.csus.ecs.pc2.core.model;
 import java.util.Properties;
 
 import junit.framework.TestCase;
-import edu.csus.ecs.pc2.core.Constants;
 import edu.csus.ecs.pc2.core.scoring.DefaultScoringAlgorithm;
 
 /**
@@ -39,11 +38,11 @@ public class ContestInformationTest extends TestCase {
 
         assertTrue("Same title", contestInformation1.isSameAs(contestInformation2));
 
-        contestInformation1.setMaxOutputSizeInBytes(4000);
+        contestInformation1.setMaxFileSize(4000);
 
         assertFalse("Diff max file size", contestInformation1.isSameAs(contestInformation2));
 
-        contestInformation2.setMaxOutputSizeInBytes(4000);
+        contestInformation2.setMaxFileSize(4000);
 
         assertTrue("Same max file size", contestInformation1.isSameAs(contestInformation2));
         
@@ -130,10 +129,4 @@ public class ContestInformationTest extends TestCase {
         info2.setFreezeTime("1:23:00");
         assertFalse("Expeced Freeze time changed ", info.isSameAs(info2));
     }
-    
-    public void testDefaultMaxOutputSize() throws Exception {
-        ContestInformation info = new ContestInformation();
-        assertEquals(info.getMaxOutputSizeInBytes(), Constants.DEFAULT_MAX_OUTPUT_SIZE_K * 1024);
-    }
-    
 }

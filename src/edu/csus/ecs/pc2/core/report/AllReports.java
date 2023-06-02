@@ -117,8 +117,6 @@ public class AllReports implements IReport {
         reports.add(new TeamsTSVReport());
         
         reports.add(new ScoreboardTSVReport());
-        
-        reports.add(new StandingsNSAReport());
 
         IReport [] listOfReports = (IReport[]) reports.toArray(new IReport[reports.size()]);
         Arrays.sort(listOfReports, new ReportNameByComparator());

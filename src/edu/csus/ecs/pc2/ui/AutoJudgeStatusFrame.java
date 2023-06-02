@@ -1,8 +1,7 @@
-// Copyright (C) 1989-2023 PC2 Development Team: John Clevenger, Douglas Lane, Samir Ashoo, and Troy Boudreau.
+// Copyright (C) 1989-2019 PC2 Development Team: John Clevenger, Douglas Lane, Samir Ashoo, and Troy Boudreau.
 package edu.csus.ecs.pc2.ui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,8 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import edu.csus.ecs.pc2.core.IInternalController;
-import edu.csus.ecs.pc2.core.execute.IExecutableNotify;
-import edu.csus.ecs.pc2.core.execute.IExecutableMonitor;
 import edu.csus.ecs.pc2.core.model.IInternalContest;
 
 /**
@@ -22,7 +19,7 @@ import edu.csus.ecs.pc2.core.model.IInternalContest;
  */
 
 // $HeadURL$
-public class AutoJudgeStatusFrame extends javax.swing.JFrame implements AutoJudgeNotifyMessages, IExecutableMonitor {
+public class AutoJudgeStatusFrame extends javax.swing.JFrame implements AutoJudgeNotifyMessages {
 
     /**
      * 
@@ -45,8 +42,6 @@ public class AutoJudgeStatusFrame extends javax.swing.JFrame implements AutoJudg
     
     private AutoJudgingMonitor autoJudgingMonitor = null;
 
-    private IExecutableNotify notifyFrame = null;
-    
     /**
      * This method initializes
      * 
@@ -126,7 +121,7 @@ public class AutoJudgeStatusFrame extends javax.swing.JFrame implements AutoJudg
             messageLabel = new JLabel();
             messageLabel.setText("## - Problem Title  (Run NN, Site YY)");
             messageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            messageLabel.setFont(new java.awt.Font("monospaced", java.awt.Font.BOLD, 18));
+            messageLabel.setFont(new java.awt.Font("Dialog", java.awt.Font.BOLD, 18));
             messagePanel = new JPanel();
             messagePanel.setLayout(new BorderLayout());
             messagePanel.setPreferredSize(new java.awt.Dimension(45, 45));
@@ -146,11 +141,7 @@ public class AutoJudgeStatusFrame extends javax.swing.JFrame implements AutoJudg
             stopAutoJudgingButton.setText("Stop AutoJudging");
             stopAutoJudgingButton.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
-                    if(notifyFrame != null) {
-                        notifyFrame.executeFrameTerminated();
-                    } else {
-                        startStopAutoJudging();
-                    }
+                    startStopAutoJudging();
                 }
             });
         }
@@ -160,7 +151,7 @@ public class AutoJudgeStatusFrame extends javax.swing.JFrame implements AutoJudg
     protected void startStopAutoJudging() {
         if (autoJudgingMonitor.isAutoJudgeDisabledLocally()) {
             // Locally turned off, turn it ON
-            getStopAutoJudgingButton().setText("Stop AutoJudging");
+            getStopAutoJudgingButton().setText("Stop Auto Judging");
             new Thread(new Runnable() {
                 public void run() {
                     autoJudgingMonitor.setAutoJudgeDisabledLocally(false);
@@ -229,54 +220,6 @@ public class AutoJudgeStatusFrame extends javax.swing.JFrame implements AutoJudg
 
     public String getPluginTitle() {
         return "Auto Judge Status Frame";
-    }
-
-    @Override
-    public void resetFrame() {
-        setTimerCountLabelColor(Color.black);
-    }
-
-    @Override
-    public void setTimerFrameVisible(boolean bHow)
-    {
-        // The AJ Status frame is not controlled by the execution timer, but by the AJ itself
-        return;
-    }
-    
-    @Override
-    public void setTimerCountLabelColor(Color fg) {
-        if(bigAutoJudgeStatusLabel != null) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    bigAutoJudgeStatusLabel.setForeground(fg);
-                }
-            });
-           
-        }
-    }
-
-    @Override
-    public void setTimerCountLabelText(String msg) {
-        updateStatusLabel(msg);
-        
-    }
-
-    @Override
-    public void setExecuteTimerLabel(String msg) {
-        updateMessage(msg);
-        
-    }
-
-    @Override
-    public void setTerminateButtonNotify(IExecutableNotify ntfy) {
-        notifyFrame = ntfy;
-        if(ntfy != null) {
-            this.getStopAutoJudgingButton().setText("Terminate");
-        } else {
-            // We had to be auto-judging to get here
-            this.getStopAutoJudgingButton().setText("Stop AutoJudging");
-        }
-        
     }
 
 } // @jve:decl-index=0:visual-constraint="10,10"

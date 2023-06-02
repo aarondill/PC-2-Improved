@@ -177,7 +177,7 @@ public class InternalDumpReport implements IReport {
         printWriter.println();
 
         printWriter.println("  Judges' Default Answer: '" + contestInformation.getJudgesDefaultAnswer() + "'");
-        printWriter.println("  Max output file size " + contestInformation.getMaxOutputSizeInBytes());
+        printWriter.println("  Max output file size " + contestInformation.getMaxFileSize());
 
         if (contestInformation.getTeamDisplayMode() != null) {
             printWriter.println("  Judges see: " + contestInformation.getTeamDisplayMode());

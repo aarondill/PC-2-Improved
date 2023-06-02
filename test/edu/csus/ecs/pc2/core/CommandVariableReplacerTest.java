@@ -65,7 +65,7 @@ public class CommandVariableReplacerTest extends AbstractTestCase {
                 "{:problemletter}::C", //
                 "{:problem}::3", //
                 "{:siteid}::1", //
-                "{:timelimit}::10", //
+                "{:timelimit}::30", //
                 "{:validator}::{:validator}", //
         };
 

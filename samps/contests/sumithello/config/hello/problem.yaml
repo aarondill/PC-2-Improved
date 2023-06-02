@@ -10,8 +10,6 @@ author:
 license: 
 rights_owner: 
 
-max-output-size-K: 128
-
 limits: 
    timeout: 120
 

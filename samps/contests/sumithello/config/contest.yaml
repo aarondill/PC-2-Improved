@@ -11,8 +11,6 @@ duration: 5:00:00
 scoreboard-freeze-length: 1:00:00
 penalty-time: 20
 
-max-output-size-K: 137
-
 # PC2-specific mappings:
 running: false
 elapsed: 0:00:00
